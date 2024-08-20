@@ -7,7 +7,7 @@ import { Button } from './Button';
 const meta = {
   title: 'Example/Button',
   tags: ['autodocs'],
-  render: (args) => Button(args),
+  render: (args) => new Button(),
   argTypes: {
     backgroundColor: { control: 'color' },
     size: {

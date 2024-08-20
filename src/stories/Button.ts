@@ -1,5 +1,6 @@
-import { html } from 'lit';
-import { styleMap } from 'lit/directives/style-map.js';
+import { property, customElement } from 'lit/decorators.js';
+import { html, LitElement } from 'lit';
+import styles from './button.css?raw&lit-css';
 
 export interface ButtonProps {
   /**
@@ -26,17 +27,20 @@ export interface ButtonProps {
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({ primary, backgroundColor, size, label, onClick }: ButtonProps) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+@customElement('storybook-button')
+export class Button extends LitElement {
+  static styles = [styles];
 
+  @property({ type: Boolean, reflect: true })
+  primary = false;
+
+  render() {
   return html`
-    <button
-      type="button"
-      class=${['storybook-button', `storybook-button--${size || 'medium'}`, mode].join(' ')}
-      style=${styleMap({ backgroundColor })}
-      @click=${onClick}
-    >
-      ${label}
-    </button>
-  `;
+      <button
+        type="button"
+      >
+        Label
+      </button>
+    `;
+  }
 };
