@@ -1,6 +1,6 @@
 import { property, customElement } from 'lit/decorators.js';
 import { html, LitElement } from 'lit';
-import styles from './button.css?raw&lit-css';
+import styles from './button.css?lit-css';
 
 export interface ButtonProps {
   /**

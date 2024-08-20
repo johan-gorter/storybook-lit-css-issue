@@ -12,16 +12,16 @@ function litCss(): PluginOption {
   return {
     name: 'vite-plugin-lit-css',
     resolveId(id, importer) {
-      if (id.endsWith('?raw&lit-css')) {
+      if (id.endsWith('?lit-css')) {
         return resolve(dirname(importer!), id);
       }
     },
     load: {
       order: 'pre',
       async handler(id) {
-        if (id.endsWith('?raw&lit-css')) {
+        if (id.endsWith('?lit-css')) {
           try {
-            let fileName = id.replace('?raw&lit-css', '');
+            let fileName = id.replace('?lit-css', '');
             this.addWatchFile(fileName);
             let code = await fs.promises.readFile(fileName, 'utf-8');
             // try {
